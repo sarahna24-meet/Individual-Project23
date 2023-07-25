@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link type="stylesheet/css" src="static/css/style.css">
+</head>
+<body>
+    {% for tweet in tweets %}
+        <li>{{tweets[tweet]['text']}}</li>
+        <li>{{tweets[tweet]['title']}}</li>
+    {% endfor %}
+</body>
+</html>
