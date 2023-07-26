@@ -39,14 +39,14 @@ def signup():
         email = request.form['email']
         password = request.form['password']
         username = request.form['username']
-        # try: 
-        login_session['user'] = auth.create_user_with_email_and_password(email, password)
-        UID = login_session['user']['localId']
-        user = {"username": username,"email": email, "password": password}
-        db.child("Users").child(UID).set(user)
-        return redirect(url_for('display_user'))
-        # except: 
-        #     error = "Authentication Failed"
+        try: 
+            login_session['user'] = auth.create_user_with_email_and_password(email, password)
+            UID = login_session['user']['localId']
+            user = {"username": username,"email": email, "password": password}
+            db.child("Users").child(UID).set(user)
+            return redirect(url_for('display_user'))
+        except: 
+            error = "Authentication Failed"
 
     return render_template("signup.html")
 
@@ -54,7 +54,12 @@ def signup():
 def display_user():
     UID = login_session['user']['localId']
     user = db.child("Users").child(UID).get().val()
-    return render_template("index.html", user = user )    
+    return render_template("index.html", user = user ) 
+
+@app.route("/fav")  
+def favorites():
+    return render_template("fav.html")
+
 
 if __name__ == '__main__':
     app.run(debug=True)
