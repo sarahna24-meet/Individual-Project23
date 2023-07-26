@@ -29,3 +29,76 @@ body {
 #fav {
 	background-color: #ff3300;
 }
+
+#safety_net img{
+	border: none;
+  	background-color: transparent;
+  	width: 100px;
+  	height: 100px;
+}
+
+#XO img{
+	border: none;
+  	background-color: transparent;
+  	width: 100px;
+  	height: 100px;
+}
+
+#die_hard img{
+	border: none;
+  	background-color: transparent;
+  	width: 100px;
+  	height: 100px;
+}
+
+#needed img{
+	border: none;
+  	background-color: transparent;
+  	width: 100px;
+  	height: 100px;
+}
+
+#spongbob img{
+	border: none;
+  	background-color: transparent;
+  	width: 100px;
+  	height: 100px;
+}
+
+#undercover img{
+	border: none;
+  	background-color: transparent;
+  	width: 100px;
+  	height: 100px;
+}
+
+#searchForm {
+  display: flex;
+  align-items: center;
+}
+
+#searchInput {
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  flex-grow: 1;
+}
+
+#searchInput:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+button {
+  margin-left: 8px;
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;

@@ -24,14 +24,14 @@ app.config['SECRET_KEY'] = 'super-secret-key'
 @app.route('/', methods=['GET', 'POST'])
 def signin():
     if request.method == 'POST':
-        username = request.form['username']
+        email = request.form['email']
         password = request.form['password']
         try:
-            login_session['user'] = auth.sign_in_with_password_and_username(password,username)
-            return redirect(url_for('index_tweet'))
+            login_session['user'] = auth.sign_in_with_email_and_password(email, password)
+            return redirect(url_for('display_user'))
         except:
             error = "Authentication Failed"    
-    return render_template("index.html")
+    return render_template("signin.html")
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
@@ -39,22 +39,22 @@ def signup():
         email = request.form['email']
         password = request.form['password']
         username = request.form['username']
-        try: 
-            login_session['user'] = auth.create_user_with_email_and_password_and_username(email, password, username)
-            UID = login_session['user']['localId']
-            user = {"username": username,"email": email, "password": password}
-            db.child("Users").child(UID).set(user)
-            return redirect(url_for('index_tweet'))
-        except: 
-            error = "Authentication Failed"
+        # try: 
+        login_session['user'] = auth.create_user_with_email_and_password(email, password)
+        UID = login_session['user']['localId']
+        user = {"username": username,"email": email, "password": password}
+        db.child("Users").child(UID).set(user)
+        return redirect(url_for('display_user'))
+        # except: 
+        #     error = "Authentication Failed"
 
-    return render_template("index.html")
+    return render_template("signup.html")
 
 @app.route("/display_user")
 def display_user():
     UID = login_session['user']['localId']
     user = db.child("Users").child(UID).get().val()
-    return render_template("signup.html")    
+    return render_template("index.html", user = user )    
 
 if __name__ == '__main__':
     app.run(debug=True)
