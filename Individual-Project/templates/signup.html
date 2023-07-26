@@ -3,48 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <title>Signup</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-    <center>
+    <!-- Heading -->
+    <div>
+        <h4>
+            Create an account!!
+        </h4>
+    </div>
+
+    <!-- Form -->
+    <div>
         <form method="post" action="/signup">
-            <!-- Heading -->
-            <h4>
-                Create an account!!
-            </h4>
-
-            <!-- Subheading -->
-            
+            <!-- username -->
+            <lable>Username</label>
             <br>
-            <lable>username</label>
+            <input class="text-input" type = "username" id = "username" name = "username">
             <br>
-            <input type = "username" id = "username" name = "username">
 
+            <!-- email -->
+            <label>Email address*</label>
+            <br>
+            <input class="text-input" type="email"  name="email" id="emailStr" required>
+            <br>
 
-             <!-- Email -->
-            <div>
-                <label>Email address*</label>
-            <div>
-                <input type="email"  name="email" id="emailStr" required>
-            </div>
-         </div>
+            <!-- password -->
+            <label>Password*</label>
+            <br>
+            <input class="text-input" type="password"  name="password" minlength="6">
+            <br>
 
-         <!-- Password -->
-            <div>
-                <label>Password*</label>
-                <div class="input-group">
-                    <input type="password"  name="password" minlength="6">
-                </div>
-            </div>
-        
-           <!-- Button -->
-            <div>
-                <input type="submit"/>
-            </div>
+            <!-- submit -->
+            <input type="submit" id = "submit"/>
         </form>
-  </center> 
-  <center> 
-    <br>
-    <a href="/"><button>signin</button></a>
-</center>
+    </div>
+
+    <!-- Go to signin -->
+    <div>
+        <button id = "button">Go to signin</button>
+    </div>
 </body>
 </html>

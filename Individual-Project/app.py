@@ -31,7 +31,7 @@ def signin():
             return redirect(url_for('index_tweet'))
         except:
             error = "Authentication Failed"    
-    return render_template("signin.html")
+    return render_template("index.html")
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
@@ -48,7 +48,7 @@ def signup():
         except: 
             error = "Authentication Failed"
 
-    return render_template("signup.html")
+    return render_template("index.html")
 
 @app.route("/display_user")
 def display_user():
